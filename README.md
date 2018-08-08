@@ -100,5 +100,3 @@ Sample output:
 
 ![Searching for a record](http://www.primechaintech.com/images/open_source/4_search_record.png)
 
-# blockchain-ekyc-sawtooth
-# blockchain-ekyc-sawtooth
