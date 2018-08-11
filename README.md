@@ -1,6 +1,9 @@
 # Blockchain-eKYC (Hyperledger Sawtooth)
 
-Blockchain-eKYC is a permissioned Hyperledger Sawtooth blockchain for sharing corporate KYC records. The records are stored in the blockchain in an encrypted form and can only be viewed by entities that have been "whitelisted" by the issuer entity. This ensures data privacy and confidentiality while at the same time ensuring that records are shared only between entities that trust each other. 
+Blockchain-eKYC (Hyperledger Sawtooth) is a permissioned Hyperledger Sawtooth blockchain for sharing corporate KYC records. The records are stored in the blockchain in an encrypted form and can only be viewed by entities that have been "whitelisted" by the issuer entity. This ensures data privacy and confidentiality while at the same time ensuring that records are shared only between entities that trust each other. 
+
+**Blockchain-eKYC (Hyperledger Sawtooth) is maintained by Rahil Tiwari, Blockchain Developer, Primechain Technologies Pvt. Ltd.**
+
 
 ## A. Installation and setup
 
