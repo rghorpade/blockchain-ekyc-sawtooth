@@ -183,44 +183,39 @@ After the last command, the following output appears:
  sawtooth keygen
  sudo sawadm keygen	
 ```		
-3. The validator configuration file specifies network information that allows the validator to advertise itself properly and 	       	search for peers. This file also contains settings for optional authorization roles and transactor permissions.
- If the config directory contains a file named validator.toml, the configuration settings are applied when the validator starts.       	By default, config directory is `/etc/sawtooth`.
+3. The validator configuration file specifies network information that allows the validator to advertise itself properly and search for peers. This file also contains settings for optional authorization roles and transactor permissions.
+ If the config directory contains a file named validator.toml, the configuration settings are applied when the validator starts. By default, config directory is `/etc/sawtooth`.
 	   
- Please refer following documentation to know configurations in `validator.toml` file:
-	     
-  https://sawtooth.hyperledger.org/docs/core/releases/latest/sysadmin_guide/configuring_sawtooth/validator_configuration_file.html   
-  [Please find the attached `validator.toml.example` file at `/etc/sawtooth/` directory. After changing configurations to apply those changes, change file name to `validator.toml`]
+Refer to [this documentation](https://sawtooth.hyperledger.org/docs/core/releases/latest/sysadmin_guide/configuring_sawtooth/validator_configuration_file.html) to know configurations in `validator.toml` file. Find the attached `validator.toml.example` file at `/etc/sawtooth/` directory. After changing configurations to apply those changes, change file name to `validator.toml`]
 	   
  In the example `validator.toml` file in /sawtooth directory:
 ```	   
-	   bind = [
-  		"network:tcp://10.1.0.6:8800",
-  		"component:tcp://127.0.0.1:4004"
-	   ]
+bind = [
+  	"network:tcp://10.1.0.6:8800",
+  	"component:tcp://127.0.0.1:4004"
+	]
 ```	   
-  network is IP address of the node on which the configuations are done. [You can check IP address by running `ifconfig` 	     	command]
+`network` is the IP address of the node on which the configuations are done. [You can check IP address by running `ifconfig` command]
 	   
-  Similarly, configuations given in `seeds` and `peers` are the IP addresses of the other nodes in the network. Do the same 	configurations on all nodes. As given below, in case of 2 nodes there will be one peer/seed
+  Similarly, configurations given in `seeds` and `peers` are the IP addresses of the other nodes in the network. Do the same 	configurations on all nodes. As given below, in case of 2 nodes there will be one peer/seed
 ```	   
-	   seeds = ["tcp://10.1.0.7:8800"]
-	   
-	   peers = ["tcp://10.1.0.7:8800"]
+seeds = ["tcp://10.1.0.7:8800"]	   
+peers = ["tcp://10.1.0.7:8800"]
 ```	   
   Similarly, in case of 4 nodes there will be 3 peers/seeds for each node. In that case, configurations will be like 		     following:
 ```	   
-	   seeds = ["tcp://10.1.0.7:8800","tcp://10.1.0.8:8800","tcp://10.1.0.9:8800"]
-	   
-	   peers = ["tcp://10.1.0.7:8800","tcp://10.1.0.8:8800","tcp://10.1.0.9:8800"]
+seeds = ["tcp://10.1.0.7:8800","tcp://10.1.0.8:8800","tcp://10.1.0.9:8800"]	   
+peers = ["tcp://10.1.0.7:8800","tcp://10.1.0.8:8800","tcp://10.1.0.9:8800"]
 ```	    
 	   
 4. After completing configurations successfully on both nodes, as shown in step 3; run the services on both nodes again.
 
 5. To check validator logs, find `validator-debug.log` file in `/var/log/sawtooth` directory.
 	
- **NOTE: Please find `validator.toml` example file in sawtooth directory.**   
- **NOTE: In case of one node only,just do step 2.**
+***Note:***
+* Please find `validator.toml` example file in sawtooth directory. 
+* In case of one node only,just do step 2.
 	
-
 ## 9. Sawtooth for 3 or more nodes with PoET registration
  	
 In case of PoET registration, follow below steps on first node (where genesis block is created):
@@ -269,7 +264,7 @@ sawtooth.poet.key_block_claim_limit=100000
 ```	
 sawadm genesis config-genesis.batch config.batch poet.batch poet-settings.batch
 ```		
-6. Then run all the services given in step 6 in sequence including `sawtooth-poet-validator-registry-tp.service` on all nodes. Please refer to [this documentation[(https://sawtooth.hyperledger.org/docs/core/nightly/master/app_developers_guide/creating_sawtooth_network.html) for more details.
+6. Then run all the services given in step 6 in sequence including `sawtooth-poet-validator-registry-tp.service` on all nodes. Please refer to [this documentation](https://sawtooth.hyperledger.org/docs/core/nightly/master/app_developers_guide/creating_sawtooth_network.html) for more details.
  	
 ## 10. eKYC Application - single node setup
 
