@@ -322,7 +322,7 @@ Please enter SENDGRID_API_KEY in config.conf. This is your Sendgrid API key. Thi
 	   
 Save and exit nano.
 		
-Now run: [Note: Run only on one of the nodes] (sawtooth/).
+Now run: [**Note: Run only on one of the nodes**] (sawtooth/).
 
 ```		
 bash category.sh
@@ -332,11 +332,7 @@ In /sawtooth directory path;
 	
 ```
 cd /jsclient
-```
-```
 rm -rf node_modules
-```		
-```
 npm install --save
 ```
 
