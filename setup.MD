@@ -9,7 +9,7 @@ sudo git clone https://github.com/Primechain/sawtooth.git
 ```
 Note: You can check ${HOME} path by running: `echo ${HOME}`
 
-## 2. Install Java and Maven:
+## 2. Install Java and Maven
 	
 Run `java_installation.sh` file by running the following command at the available location (sawtooth/shell-scripts);
 ```	
@@ -34,7 +34,7 @@ Output can be like this:
 Apache Maven 3.0.4
 ```	 
 		
-## 3. MongoDB Installation:
+## 3. MongoDB Installation
 	
 Run `mongo_installation.sh` file by running following command at the available location (sawtooth/shell-scripts);
 ```	
