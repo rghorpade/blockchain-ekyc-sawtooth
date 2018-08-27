@@ -103,7 +103,7 @@ Client application uses REST API endpoints to upload (POST), get (GET) documents
 
 ![](http://www.primechaintech.com/img/sawtooth/batches.png)
 
-### 3.3	Submitting batches to the Validator
+* Submitting batches to the Validator
 
 ![](http://www.primechaintech.com/img/sawtooth/post_validator.png)
 
