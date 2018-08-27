@@ -8,6 +8,8 @@
 [2. Uploading records](#2-uploading-records)
 
 [3. Nuts and bolts](#3-nuts-and-bolts)
+[3.1 Transaction Processor and State](#31-transaction-processor-and-state)
+[3.2 Client Application](#32-client-application)
 
 [4. Installation and setup](#4-installation-and-setup)
 
@@ -73,7 +75,7 @@ This section uses the following terminoloy:
 * [Validator Process](https://sawtooth.hyperledger.org/docs/core/releases/latest/architecture/global_state.html) - this is the Global State Store layer. 
 * Client Application (User)	- this implies a user on solution; the user’s public key executes the transactions.
 
-### 3.1	Transaction Processor and State:
+### 3.1	Transaction Processor and State
 
 The Transaction Processor of the eKYC application is written in Java. It contains all the business logic of the application. Hyperledger Sawtooth stores data within a Merkle Tree. Data is stored in leaf nodes, and each node is accessed using an addressing scheme that is composed of 35 bytes, represented as 70 hex characters. 
 
