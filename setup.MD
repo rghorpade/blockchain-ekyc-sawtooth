@@ -105,7 +105,7 @@ Note: Start this service only in case of PoET registration i.e., in case of 3 or
 ```			 
 sudo systemctl start sawtooth-java-tp.service
 ```	
-[Note: Refer 7 to create this service].
+**NOTE: Refer 7 to create this service.**
 		
 To see status of the component run:
 ```				
@@ -136,40 +136,43 @@ After this run the service by moving out of root user.
 sudo systemctl start sawtooth-java-tp.service
 ```
 	
-## 8. Sawtooth on Network Setup_1 (1 or 2 nodes)
+## 8. Sawtooth on Network Setup_1 [less than 3 node setup]
  	
 1. On the network, for the "FIRST NODE" only, it is necessary to create a genesis block. To do that, run following commands:
  
 ```	
-sawtooth keygen
-sudo sawadm keygen		
+sawtooth keygen	
+sudo sawadm keygen
 sawset genesis
 sudo -u sawtooth sawadm genesis config-genesis.batch
 ```		
 After the last command, the following output appears:
-```		
-Processing config-genesis.batch...
-Generating /var/lib/sawtooth/genesis.batch
-```
+ 
+ ```		
+ Processing config-genesis.batch...
+ Generating /var/lib/sawtooth/genesis.batch
+ ```
 		
 2. On other node, create user key and root key for the validator using following commands
+
 ```	
-sawtooth keygen
-sudo sawadm keygen	
+ sawtooth keygen
+ sudo sawadm keygen	
 ```		
-3. The validator configuration file specifies network information that allows the validator to advertise itself properly and search for peers. This file also contains settings for optional authorization roles and transactor permissions.
- If the config directory contains a file named validator.toml, the configuration settings are applied when the validator starts. By default, config directory is `/etc/sawtooth`.
+3. The validator configuration file specifies network information that allows the validator to advertise itself properly and 	       	search for peers. This file also contains settings for optional authorization roles and transactor permissions.
+ If the config directory contains a file named validator.toml, the configuration settings are applied when the validator starts.       	By default, config directory is `/etc/sawtooth`.
 	   
-Refer to [this documentation](https://sawtooth.hyperledger.org/docs/core/releases/latest/sysadmin_guide/configuring_sawtooth/validator_configuration_file.html) to know configurations in `validator.toml` file:
+ Please refer following documentation to know configurations in `validator.toml` file:
 	     
-[Please find the attached `validator.toml.example` file at `/etc/sawtooth/` directory. After changing configurations to apply those changes, change file name to `validator.toml`]
+  https://sawtooth.hyperledger.org/docs/core/releases/latest/sysadmin_guide/configuring_sawtooth/validator_configuration_file.html   
+  [Please find the attached `validator.toml.example` file at `/etc/sawtooth/` directory. After changing configurations to apply those changes, change file name to `validator.toml`]
 	   
  In the example `validator.toml` file in /sawtooth directory:
 ```	   
-bind = [
-  	"network:tcp://10.1.0.6:8800",
-  	"component:tcp://127.0.0.1:4004"
-	]
+	   bind = [
+  		"network:tcp://10.1.0.6:8800",
+  		"component:tcp://127.0.0.1:4004"
+	   ]
 ```	   
   network is IP address of the node on which the configuations are done. [You can check IP address by running `ifconfig` 	     	command]
 	   
@@ -190,24 +193,21 @@ bind = [
 
 5. To check validator logs, find `validator-debug.log` file in `/var/log/sawtooth` directory.
 	
- ** NOTE: Please find `validator.toml` example file in sawtooth directory. **   
-`** NOTE: In case of one node only. Just do step 2. **
+ **NOTE: Please find `validator.toml` example file in sawtooth directory.**   
+ **NOTE: In case of one node only,just do step 2.**
 	
 
-## 9. Sawtooth on Network Setup_2 (3 or more nodes setup with PoET registration)
+## 9. Sawtooth on Network Setup_2 [ 3 or more than 3 node setup {with PoET registration} ] 
  	
 In case of PoET registration, follow below steps on first node (where genesis block is created):
 ```	
 sawtooth keygen
-```
-```
 sudo sawadm keygen
 ```		
 Ensure that the required user and validator keys exist:
-```	
+```
 ls ~/.sawtooth/keys/
 yourname.priv    yourname.pub
-
 ```
 ```
 ls /etc/sawtooth/keys/
@@ -218,7 +218,7 @@ validator.priv   validator.pub
 ```	
 sawset genesis -k /etc/sawtooth/keys/validator.priv -o config-genesis.batch
 ```
-2. Create a batch to initialize the PoET consensus settings. This command sets the consensus algorithm to PoET simulator, and 		then applies the required settings.
+2. Create a batch to initialize the PoET consensus settings. This command sets the consensus algorithm to PoET simulator, and 	      	 then applies the required settings.
 ```	
 sawset proposal create -k /etc/sawtooth/keys/validator.priv \
 -o config.batch \
@@ -227,7 +227,7 @@ sawtooth.poet.report_public_key_pem="$(cat /etc/sawtooth/simulator_rk_pub.pem)" 
 sawtooth.poet.valid_enclave_measurements=$(poet enclave measurement) \
 sawtooth.poet.valid_enclave_basenames=$(poet enclave basename)
 ```
-3. Create a batch to register the first validator with the PoET Validator Registry. Without this command, the validator would 		not be able to publish any blocks.
+3. Create a batch to register the first validator with the PoET Validator Registry. Without this command, the validator would 	              	 not be able to publish any blocks.
 ```	
 poet registration create -k /etc/sawtooth/keys/validator.priv -o poet.batch
 ```		
@@ -261,19 +261,19 @@ Please refer to the following documentation for more details :
 ```	
  sudo nano notification_config.js
 ```	
-  provide your ip address at IP_ADDRESS: "<VM-IP-ADDRESS>" eg., IP_ADDRESS : "198.168.0.1"
-  Similarly, provide other configurations provided in the `notification_config.js` file. 
+Provide your ip address at IP_ADDRESS: "VM-IP-ADDRESS" eg., IP_ADDRESS : "198.168.0.1"
+Similarly, provide other configurations provided in the `notification_config.js` file. 
 	   
- Please enter SENDGRID_API_KEY in config.conf. This is your Sendgrid API key. This is for transactional emails. If you don't have a sendgrid account, create one at https://sendgrid.com/
+Please enter SENDGRID_API_KEY in config.conf. This is your Sendgrid API key. This is for transactional emails. If you don't have a sendgrid account, create one at https://sendgrid.com/
 	   
- Save and exit nano.
+Save and exit nano.
 		
- Now run:
+Now run:
 
 ```
 bash category.sh
 ```		
- In /sawtooth directory path;
+In /sawtooth directory path;
 ```	
 cd /jsclient
 ```	
@@ -284,12 +284,12 @@ rm -rf node_modules
 npm install --save
 ```		
 
-Now run the application by running command [Check if Mongo Service is running or not. If not, start the service as 			mentioned in MongoDB installation];
+Now run the application by running command [Check if Mongo Service is running or not. If not, start the service as 		mentioned in MongoDB installation]
 ```   
 node kycMember.js
 ```   		
 
-Go to http://<VM-IP-ADDRESS>:2309/register and fill up the admin account details:
+Go to `http://<VM-IP-ADDRESS>:2309/register` and fill up the admin account details:
 
     	Name
     	Email Address
@@ -301,24 +301,21 @@ Go to http://<VM-IP-ADDRESS>:2309/register and fill up the admin account details
 
 	Click create  
 	
-You will be redirected to a page that displays the message 'Account activation mail has been sent to email'.
+You will be redirected to a page that displays the message `Account activation mail has been sent to email`.
    
-Click on "activate account" button in the email received for setting up this solution. You will be redirected to a page 		   that displays the message - "Login credentials has been sent to your email."
+Click on `Activate Account` button in the email received for setting up this solution. You will be redirected to a page 	that displays the message - `Login credentials has been sent to your email`.
    
 Go to your email and click on the link and use the login credentials emailed to login.
-   
-   
+      
 ## 11. eKYC Application [Multi system(Node) Setup]:
 
 **Please make sure all the services are up and running before starting on following steps.**
 
 ```		
- cd /sawtooth/jsclient/configs
-```	
-```
+cd /sawtooth/jsclient/configs
 sudo nano notification_config.js
 ```	
-Provide your ip address at IP_ADDRESS: "<VM-IP-ADDRESS>" eg., IP_ADDRESS : "198.168.0.1".
+Provide your ip address at IP_ADDRESS: "VM-IP-ADDRESS" eg., IP_ADDRESS : "198.168.0.1".
 Similarly, provide other configurations provided in the notification_config.js file. 
 	   
 Please enter SENDGRID_API_KEY in config.conf. This is your Sendgrid API key. This is for transactional emails. If you don't have a sendgrid account, create one at https://sendgrid.com/
@@ -351,7 +348,7 @@ start the service as mentioned in MongoDB installation];
 ```
 node kycMember.js
 ```		
-Go to http://<VM-IP-ADDRESS>:2309/register and fill up the admin account details:
+Go to `http://<VM-IP-ADDRESS>:2309/register` and fill up the admin account details:
 
     	Name
     	Email Address
@@ -365,11 +362,10 @@ Go to http://<VM-IP-ADDRESS>:2309/register and fill up the admin account details
 		
 You will be redirected to a page that displays the message `Account activation mail has been sent to email`.
    
-Click on "activate account" button in the email received for setting up this solution. You will be redirected to a page 	that displays the message - "Login credentials has been sent to your email."
+Click on `activate account` button in the email received for setting up this solution. You will be redirected to a page 	that displays the message - `Login credentials has been sent to your email`.
    
 Go to your email and click on the link and use the login credentials emailed to login.
 
-   
 ## 12. eKYC Admin Application [Even in case of multi-node network, run admin application on one node only.]:
 
 Admin needs to approve members. Just start the application by running following commands:
@@ -382,7 +378,7 @@ cd sawtooth/admin
 ```	
 node kycAdmin.js
 ```	
-Go to http://<VM-IP-ADDRESS>:2405/register and fill up the admin account details:
+Go to `http://<VM-IP-ADDRESS>:2405/register` and fill up the admin account details:
 
     	Name
     	Email Address
@@ -394,6 +390,6 @@ Go to http://<VM-IP-ADDRESS>:2405/register and fill up the admin account details
 		
 You will be redirected to a page that displays the message `Account activation mail has been sent to email`. 
 	
-Click on "activate account" button in the email received for setting up this solution. You will be redirected to a page that displays the message - "Login credentials has been sent to your email."
+Click on `activate account` button in the email received for setting up this solution. You will be redirected to a page that displays the message - `Login credentials has been sent to your email`.
 	
 Go to your email and click on the link and use the login credentials emailed to login.
