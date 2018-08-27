@@ -194,7 +194,7 @@ After the last command, the following output appears:
 5. To check validator logs, find `validator-debug.log` file in `/var/log/sawtooth` directory.
 	
  **NOTE: Please find `validator.toml` example file in sawtooth directory.**   
-`**NOTE: In case of one node only. Just do step 2.**
+ **NOTE: In case of one node only,just do step 2.**
 	
 
 ## 9. Sawtooth on Network Setup_2 [ 3 or more than 3 node setup {with PoET registration} ] 
