@@ -32,6 +32,7 @@ Document type. This information is stored in the blockchain in plain text / un-e
 6. Hexadecimal content is uploaded to the blockchain.
 
 ***Sample output:***
+```
     {
       file_hash: 84a9ceb1ee3a8b0dc509dded516483d1c4d976c13260ffcedf508cfc32b52fbe
       file_txid: 2e770002051216052b3fdb94bf78d43a8420878063f9c3411b223b38a60da81d
@@ -40,7 +41,7 @@ Document type. This information is stored in the blockchain in plain text / un-e
       secrect_key: ZOwWyWHiOvLGgEr4sTssiir6qUX0g3u0
       initialisation_vector: FAaZB6MuHIuX
     }
-
+```
 ![Uploading a record](http://www.primechaintech.com/images/open_source/2_upload_record.png)
 
 
