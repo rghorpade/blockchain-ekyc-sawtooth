@@ -128,37 +128,38 @@ ExecStart=/home/pcuser/sawtooth/javaprocessor/build_java_processor.sh
 ```	
 edit path accordingly to the path of `javaprocessor` and `build_java_processor.sh` as per your system.
 		
-3. Save and move the file to `/etc/systemd/system/`
+Save and move the file to `/etc/systemd/system/`
 	 
-4. After this run the service by moving out of root user.
+After this run the service by moving out of root user.
+
 ```
-   sudo systemctl start sawtooth-java-tp.service
+sudo systemctl start sawtooth-java-tp.service
 ```
 	
- ## 8. Sawtooth on Network Setup_1 [less than 3 node setup]
+## 8. Sawtooth on Network Setup_1 [less than 3 node setup]
  	
- 1. On the network, for the "FIRST NODE" only, it is necessary to create a genesis block. To do that, run following commands:
+1. On the network, for the "FIRST NODE" only, it is necessary to create a genesis block. To do that, run following commands:
  
- ```	
-  sawtooth keygen
- ```
- ```		
-  sudo sawadm keygen
- ```
- ```		
-  sawset genesis
- ```		
- ```
-  sudo -u sawtooth sawadm genesis config-genesis.batch
- ```		
- After the last command, the following output appears:
+```	
+sawtooth keygen
+```
+```		
+sudo sawadm keygen
+```
+```		
+sawset genesis
+```		
+```
+sudo -u sawtooth sawadm genesis config-genesis.batch
+```		
+After the last command, the following output appears:
  
  ```		
  Processing config-genesis.batch...
  Generating /var/lib/sawtooth/genesis.batch
  ```
 		
- 2. On other node, create user key and root key for the validator using following commands
+2. On other node, create user key and root key for the validator using following commands
 
 ```	
  sawtooth keygen
@@ -166,12 +167,13 @@ edit path accordingly to the path of `javaprocessor` and `build_java_processor.s
 ```
  sudo sawadm keygen	
 ```		
-  3. The validator configuration file specifies network information that allows the validator to advertise itself properly and 	       	search for peers. This file also contains settings for optional authorization roles and transactor permissions.
+3. The validator configuration file specifies network information that allows the validator to advertise itself properly and 	       	search for peers. This file also contains settings for optional authorization roles and transactor permissions.
  If the config directory contains a file named validator.toml, the configuration settings are applied when the validator starts.       	By default, config directory is `/etc/sawtooth`.
 	   
  Please refer following documentation to know configurations in `validator.toml` file:
 	     
-  https://sawtooth.hyperledger.org/docs/core/releases/latest/sysadmin_guide/configuring_sawtooth/validator_configuration_file.html   [Please find the attached 'validator.toml.example' file at '/etc/sawtooth/' directory. After changing configurations to apply those changes, change file name to 'validator.toml']
+  https://sawtooth.hyperledger.org/docs/core/releases/latest/sysadmin_guide/configuring_sawtooth/validator_configuration_file.html   
+  [Please find the attached `validator.toml.example` file at `/etc/sawtooth/` directory. After changing configurations to apply those changes, change file name to `validator.toml`]
 	   
  In the example `validator.toml` file in /sawtooth directory:
 ```	   
@@ -195,12 +197,12 @@ edit path accordingly to the path of `javaprocessor` and `build_java_processor.s
 	   peers = ["tcp://10.1.0.7:8800","tcp://10.1.0.8:8800","tcp://10.1.0.9:8800"]
 ```	    
 	   
-  4. After completing configurations successfully on both nodes, as shown in step 3; run the services on both nodes again.
+4. After completing configurations successfully on both nodes, as shown in step 3; run the services on both nodes again.
 
-  5. To check validator logs, find `validator-debug.log` file in `/var/log/sawtooth` directory.
+5. To check validator logs, find `validator-debug.log` file in `/var/log/sawtooth` directory.
 	
- **NOTE: Please find `validator.toml` example file in sawtooth directory.   
-`**NOTE: In case of one node only. Just do step 2.
+ ** NOTE: Please find `validator.toml` example file in sawtooth directory. **   
+`** NOTE: In case of one node only. Just do step 2. **
 	
 
 ## 9. Sawtooth on Network Setup_2 [ 3 or more than 3 node setup {with PoET registration} ] 
@@ -319,7 +321,7 @@ Go to your email and click on the link and use the login credentials emailed to 
    
 ## 11. eKYC Application [Multi system(Node) Setup]:
 
-** Please make sure all the services are up and running before starting on following steps. **
+**Please make sure all the services are up and running before starting on following steps.**
 
 ```		
  cd /sawtooth/jsclient/configs
@@ -386,7 +388,7 @@ Admin needs to approve members. Just start the application by running following 
 ```
 cd sawtooth/admin
 ```	
-[ **Note: Please make sure it is pointing to the same mongo service as above ]
+**NOTE: Please make sure it is pointing to the same mongo service as above** 
 
 ```	
 node kycAdmin.js
