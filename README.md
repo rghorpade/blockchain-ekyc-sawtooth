@@ -48,7 +48,7 @@ Records can be uploaded in any format (doc, pdf, jpg etc.) upto a maximum of 10 
 5. The non-encrypted data is converted into hexadecimal.
 6. Hexadecimal content is uploaded to the blockchain.
 
-![Code](http://www.primechaintech.com/img/sawtooth/code1.png)
+![Code](http://www.primechaintech.com/img/sawtooth/encrypt.png)
 
 ***Sample output:***
 ```
@@ -90,21 +90,22 @@ According to the use case, the User can upload multiple files using the same CIN
 
 ![](http://www.primechaintech.com/img/sawtooth/txn_logic.png)
 
-![](http://www.primechaintech.com/img/sawtooth/transaction.png)
-
 The `else {` part will do the uploading of multiple documents on the same address and fetching every uploaded documents from the State.
 
 ### 3.2	Client Application
 
 Client application uses REST API endpoints to upload (POST), get (GET) documents on the sawtooth blockchain platform. It is written in Nodejs. In case of uploading, few steps to be considered:
 * Creating and encoding transactions having header, header signature, payload (Transaction payloads are composed of binary-encoded data that is opaque to the validator.)
+
+![](http://www.primechaintech.com/img/sawtooth/transaction.png)
+
 * Creating BatchHeader, Batch, and encoding Batches
+
+![](http://www.primechaintech.com/img/sawtooth/batches.png)
 
 ### 3.3	Submitting batches to the Validator
 
 ![](http://www.primechaintech.com/img/sawtooth/post_validator.png)
-
-![](http://www.primechaintech.com/img/sawtooth/batches.png)
 
 In case of getting uploaded data from blockchain, following steps needs to be considered:
 
