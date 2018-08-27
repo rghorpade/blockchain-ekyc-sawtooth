@@ -1,5 +1,29 @@
 # Setup Blockchain-eKYC
 
+[1. Getting started](#1-getting-started)
+
+[2. Install Java and Maven](#2-install-java-and-maven)
+
+[3. MongoDB Installation](#3-mongodb-installation)
+
+[4. NodeJS Setup](#4-nodejs-setup)
+
+[5. Python setup](#5-python-setup)
+
+[6. Sawtooth Ubuntu Setup](#6-sawtooth-ubuntu-setup)
+
+[7. Create sawtooth-java-tp.service](#7-create-sawtooth-java-tpservice)
+
+[8. Sawtooth for 1 or 2 nodes](#8-sawtooth-for-1-or-2-nodes)
+
+[9. Sawtooth for 3 or more nodes with PoET registration](#9-sawtooth-for-3-or-more-nodes-with-poet-registration)
+
+[10. eKYC Application - single node setup](#10-ekyc-application---single-node-setup)
+
+[11. eKYC Application - multi node setup](#11-ekyc-application---multi-node-setup)
+
+[12. eKYC Admin Application](#12-ekyc-admin-application)
+
 ## 1. Getting started
 You will need an Ubuntu 16.04 server with the following ports open - `22, 80, 61172, 27017, 15590, 3000, 8008, 4004, 8800, 2309 (MEMBER PORT), 2405 (ADMIN PORT)`.
 
@@ -30,7 +54,6 @@ Run following command to verify maven installation:
 mvn -version
 ```
 Output can be like this:
-
 ```
 Apache Maven 3.0.4
 ```	 
@@ -136,7 +159,8 @@ After this run the service by moving out of root user.
 sudo systemctl start sawtooth-java-tp.service
 ```
 	
-## 8. Sawtooth on Network Setup_1 [less than 3 node setup]
+	
+## 8. Sawtooth for 1 or 2 nodes
  	
 1. On the network, for the "FIRST NODE" only, it is necessary to create a genesis block. To do that, run following commands:
  
@@ -197,7 +221,7 @@ After the last command, the following output appears:
  **NOTE: In case of one node only,just do step 2.**
 	
 
-## 9. Sawtooth on Network Setup_2 [ 3 or more than 3 node setup {with PoET registration} ] 
+## 9. Sawtooth for 3 or more nodes with PoET registration
  	
 In case of PoET registration, follow below steps on first node (where genesis block is created):
 ```	
@@ -252,7 +276,13 @@ Please refer to the following documentation for more details :
  	https://sawtooth.hyperledger.org/docs/core/nightly/master/app_developers_guide/creating_sawtooth_network.html 
  	
  	
-## 10. eKYC Application [Single System(Node) Setup]:
+	
+
+
+
+
+	
+## 10. eKYC Application - single node setup
 
 **Please make sure all the services are up and running before starting on following steps.**
 ```		
@@ -307,7 +337,7 @@ Click on `Activate Account` button in the email received for setting up this sol
    
 Go to your email and click on the link and use the login credentials emailed to login.
       
-## 11. eKYC Application [Multi system(Node) Setup]:
+## 11. eKYC Application - multi node setup
 
 **Please make sure all the services are up and running before starting on following steps.**
 
@@ -362,7 +392,9 @@ Click on `activate account` button in the email received for setting up this sol
    
 Go to your email and click on the link and use the login credentials emailed to login.
 
-## 12. eKYC Admin Application [Even in case of multi-node network, run admin application on one node only.]:
+## 12. eKYC Admin Application 
+
+[Even in case of multi-node network, run admin application on one node only.]:
 
 Admin needs to approve members. Just start the application by running following commands:
 
