@@ -53,82 +53,78 @@ To stop MongoDB service;
 sudo service mongod stop
 ```	
 
-4. NodeJS Setup
+## 4. NodeJS Setup
 
-	Run 'node_installation.sh' file by running following command at the available location (sawtooth/shell-scripts);
-	
-		bash node_installation.sh
-	   
-	Check nodejs version by running command:
-	   
-		nodejs --version
+Run 'node_installation.sh' file by running following command at the available location (sawtooth/shell-scripts);
+```		
+bash node_installation.sh
+```	   
+Check nodejs version by running command:
+```		   
+nodejs --version
+```	
 
+## 5. Python setup
 
-5. Python setup
-
-	Ubuntu 16.04 comes with both Python 2.7 and Python 3.5 by default. Check python version using following commands:
+Ubuntu 16.04 comes with both Python 2.7 and Python 3.5 by default. Check python version using following commands:
+```		
+python2 -V
+python3 -V
+```			
+Then run `python_setup.sh` file by running following command at the available location (sawtooth/shell-scripts);
+```		
+bash python_setup.sh
+```		
 	
-		python2 -V
-		
-		python3 -V
-		
-	Then run 'python_setup.sh' file by running following command at the available location (sawtooth/shell-scripts);
+## 6. Sawtooth Ubuntu Setup:
 	
-		bash python_setup.sh
+Run `sawtooth_ubuntu_installation.sh` file by running following command at the available location (sawtooth/shell-scripts);
+```		
+bash sawtooth_ubuntu_installation.sh
+```	
+At any time after installation, you can view the installed sawtooth packages with the following command:
+```	
+dpkg -l '*sawtooth*'
+```	  
+To create the genesis block, run the following commands:
+```	
+sawtooth keygen
+sudo sawadm keygen
+sawset genesis
+sudo -u sawtooth sawadm genesis config-genesis.batch
+```			
+To run Sawtooth components as service, run following commands in sequence:
+```		
+sudo systemctl start sawtooth-validator.service
+sudo systemctl start sawtooth-rest-api.service
+sudo systemctl start sawtooth-settings-tp.service
+sudo systemctl start sawtooth-poet-validator-registry-tp.service 
+```	
+Note: Start this service only in case of PoET registration i.e., in case of 3 or more than 3 node network. After doing the configurations as given in step 9.
+```			 
+sudo systemctl start sawtooth-java-tp.service
+```	
+[Note: Refer 7 to create this service].
 		
-	
-6. Sawtooth Ubuntu Setup:
-	
-	Run 'sawtooth_ubuntu_installation.sh' file by running following command at the available location (sawtooth/shell-scripts);
-	
-		bash sawtooth_ubuntu_installation.sh
-	
-	At any time after installation, you can view the installed sawtooth packages with the following command:
-		
-		dpkg -l '*sawtooth*'
-		   
-	To create the genesis block, run the following commands:
-	
-		1. sawtooth keygen
-		
-		2. sudo sawadm keygen
-		
-		3. sawset genesis
-		
-		4. sudo -u sawtooth sawadm genesis config-genesis.batch
-		
-		
-	To Run Sawtooth components as service, run following commands in sequence:
-	
-		a. sudo systemctl start sawtooth-validator.service
-		
-		b. sudo systemctl start sawtooth-rest-api.service
-		
-		c. sudo systemctl start sawtooth-settings-tp.service
-		
-		*d. sudo systemctl start sawtooth-poet-validator-registry-tp.service [Note: Start this service only in case of PoET 	registration i.e., in case of 3 or more than 3 node network. After doing the configurations as given in step 9.]
-		 
-		*e. sudo systemctl start sawtooth-java-tp.service [Note: Refer 7 to create this service].
-		
-		To see status of the component run:
+To see status of the component run:
+```				
+sudo systemctl status <service-name>
+```			
+To stop the component run:
+```			
+sudo systemctl stop <service-name>
+```			
 			
-			sudo systemctl status <service-name>
-			
-		To stop the component run:
-		
-			sudo systemctl stop <service-name>
-			
-			
-7. Create 'sawtooth-java-tp.service':
+## 7. Create 'sawtooth-java-tp.service':
 
-	 1. Please check the example 'sawtooth-java-tp.service' in /sawtooth/javaprocessor/
+Please check the example 'sawtooth-java-tp.service' in /sawtooth/javaprocessor/
 	 
-	 2. In file;
-	 
-	 	[Service]
-		WorkingDirectory = /home/pcuser/sawtooth/javaprocessor
-		ExecStart=/home/pcuser/sawtooth/javaprocessor/build_java_processor.sh
-
+In file;
+```	
+[Service]
+WorkingDirectory = /home/pcuser/sawtooth/javaprocessor
+ExecStart=/home/pcuser/sawtooth/javaprocessor/build_java_processor.sh
+```	
 		edit path accordingly to the path of 'javaprocessor' and 'build_java_processor.sh' as per your system.
 		
 	 3. Save and move the file to '/etc/systemd/system/'
