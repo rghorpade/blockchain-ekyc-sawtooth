@@ -94,16 +94,32 @@ According to the use case, the User can upload multiple files using the same CIN
 
 The `else {` part will do the uploading of multiple documents on the same address and fetching every uploaded documents from the State.
 
+### 3.2	Client Application
+
+Client application uses REST API endpoints to upload (POST), get (GET) documents on the sawtooth blockchain platform. It is written in Nodejs. In case of uploading, few steps to be considered:
+* Creating and encoding transactions having header, header signature, payload (Transaction payloads are composed of binary-encoded data that is opaque to the validator.)
+* Creating BatchHeader, Batch, and encoding Batches
+
+### 3.3	Submitting batches to the Validator
+
+![](http://www.primechaintech.com/img/sawtooth/post_validator.png)
+
+![](http://www.primechaintech.com/img/sawtooth/batches.png)
+
+In case of getting uploaded data from blockchain, following steps needs to be considered:
+
+1. Creating the same address from the CIN given by User, using GET method to fetch the data stored on the particular address. As given in following code snippet, `updatedAddress` created by getting user input either from User (search using CIN in the network) or from private database of the user (Records uploaded by the user). Similarly, `splitStringArray` splits the data returned from a particular address because of the transaction logic written in the Transaction Processor to upload multiple documents on the same address while updating state with list of all the uploaded data (not only the current payload).
+
+![](http://www.primechaintech.com/img/sawtooth/get_addr.png)
+
+2. After this client side logic is written to convert the `splitStringArray` by decoding it to the required format and giving User an option to download the same in the form of file.
 
 ## 4. Installation and setup
-
-To setup on Ubuntu 16.04 LTS, please refer to instructions here:
-
-https://github.com/Primechain/blockchain-ekyc-sawtooth/blob/master/setup/instruction_ubuntu
+Please refer to the guide here:
+https://github.com/Primechain/blockchain-ekyc-sawtooth/blob/master/setup.MD
 
 
 ## 5. Third party software and components
-
 Third party software and components: bcryptjs, body-parser, connect-flash, cookie-parser, express, express-fileupload, express-handlebars, express-session, express-validator, mongodb, mongoose, multichain, passport, passport-local, sendgrid/mail.
 
 ## 6. License
