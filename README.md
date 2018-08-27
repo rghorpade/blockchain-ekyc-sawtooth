@@ -8,8 +8,6 @@
 [2. Uploading records](#2-uploading-records)
 
 [3. Nuts and bolts](#3-nuts-and-bolts)
-[3.1 Transaction Processor and State](#31-transaction-processor-and-state)
-[3.2 Client Application](#32-client-application)
 
 [4. Installation and setup](#4-installation-and-setup)
 
