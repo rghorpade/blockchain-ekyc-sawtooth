@@ -103,14 +103,15 @@ Below is the address creation logic in the application:
 ![address creation logic](http://www.primechaintech.com/img/sawtooth/address_creation.png)
 
 Note:
-`uniqueValue` is the type of data (can be any value)
-`kycAddress` is the CIN of the uploaded document.
 
-According to the use case, the User can upload multiple files using the same CIN. However, state will return only the latest uploaded document. To get all the uploaded documents on the same address,  business logic is written in Transaction Processor.  
+* `uniqueValue` is the type of data (can be any value)
+* `kycAddress` is the CIN of the uploaded document.
+
+The User can upload multiple files using the same CIN. However, state will return only the latest uploaded document. To get all the uploaded documents on the same address, business logic is written in Transaction Processor.  
 
 ![](http://www.primechaintech.com/img/sawtooth/txn_logic.png)
 
-The `else {` part will do the uploading of multiple documents on the same address and fetching every uploaded documents from the State.
+The `else {` part will do the uploading of multiple documents on the same address and fetching every uploaded document from the State.
 
 ## 4. Client Application
 
