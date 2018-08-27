@@ -12,20 +12,21 @@ Blockchain-eKYC (Hyperledger Sawtooth) is a permissioned Hyperledger Sawtooth bl
 
 ## 2. Uploading records
 
-![Uploading records](http://www.primechaintech.com/img/sawtooth/upload.png)
+![Uploading records](http://www.primechaintech.com/img/sawtooth/upload2.png)
 
 Records can be uploaded in any format (doc, pdf, jpg etc.) upto a maximum of 10 MB per record. These records are automatically encrypted using AES symmetric encryption algorithm and the decryption keys are automatically stored in the exclusive web application of the of the uploading entity. 
 
 ***When a new record is uploaded to the blockchain, the following information must be provided:***
 
-1. Corporate Identity Number (CIN) of the entity to which this document relates. This information is stored in the blockchain in plain text / un-encrypted form and cannot be changed.
+1. ***Corporate Identity Number (CIN)*** of the entity to which this document relates - this information is stored in the blockchain in plain text / un-encrypted form and cannot be changed.
 
-2. Document category. This information is stored in the blockchain in plain text / un-encrypted form and cannot be changed.
-Document type. This information is stored in the blockchain in plain text / un-encrypted form and cannot be changed.
+2. ***Document category*** - this information is stored in the blockchain in plain text / un-encrypted form and cannot be changed.
 
-3. A brief description of the document - This information is stored in the blockchain in plain text / un-encrypted form and cannot be changed.
+3. ***Document type*** - this information is stored in the blockchain in plain text / un-encrypted form and cannot be changed.
 
-4. The document - This document can be in pdf, word, excel, image or other formats and is stored in the blockchain in AES encrypted form and cannot be changed. The decryption key is stored in the relevant bank's dedicated database and does NOT go into the blockchain. 
+4. ***A brief description of the document*** - This information is stored in the blockchain in plain text / un-encrypted form and cannot be changed.
+
+5. ***The document*** - this document can be in pdf, word, excel, image or other formats and is stored in the blockchain in AES encrypted form and cannot be changed. The decryption key is stored in the relevant bank's dedicated database and does NOT go into the blockchain. 
 
 ***When the above information is provided, this is what happens:***
 1. Hash of the uploaded file is calculated.
