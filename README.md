@@ -79,6 +79,21 @@ The Transaction Processor of the eKYC application is written in Java. It contain
 
 Using the Corporate Identity Number or CIN, provided by user while uploading, a 70 characters (35 bytes) address is created for uploading a record to the blockchain. To understand the Address creation and Namespace design process [see this](https://sawtooth.hyperledger.org/docs/core/releases/1.0/app_developers_guide/address_and_namespace.html)
 
+Below is the address creation logic in the application:
+![address creation logic](http://www.primechaintech.com/img/sawtooth/address_creation.png)
+
+```
+uniqueValue is the type of data (can be any value)
+kycAddress is the CIN of the uploaded document.
+```
+According to the use case, the User can upload multiple files using the same CIN. However, state will return only the latest uploaded document. To get all the uploaded documents on the same address,  business logic is written in Transaction Processor.  
+
+![](http://www.primechaintech.com/img/sawtooth/txn_logic.png)
+
+![](http://www.primechaintech.com/img/sawtooth/transaction.png)
+
+The `else {` part will do the uploading of multiple documents on the same address and fetching every uploaded documents from the State.
+
 
 ## 4. Installation and setup
 
