@@ -29,7 +29,7 @@ You will need an Ubuntu 16.04 server with the following ports open - `22, 80, 61
 
 Login to your machine `ssh <VM-USERNAME>@<VM-IP-ADDRESS>` and run following git clone command at ${HOME} path:
 ```		
-sudo git clone https://github.com/Primechain/sawtooth.git
+sudo git clone https://github.com/Primechain/blockchain-ekyc-sawtooth.git
 ```
 Note: You can check ${HOME} path by running: `echo ${HOME}`
 
