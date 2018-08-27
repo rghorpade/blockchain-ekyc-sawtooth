@@ -269,27 +269,14 @@ sawtooth.poet.key_block_claim_limit=100000
 ```	
 sawadm genesis config-genesis.batch config.batch poet.batch poet-settings.batch
 ```		
-6. Then run all the services given in step 6 in sequence including `sawtooth-poet-validator-registry-tp.service` on all nodes.
+6. Then run all the services given in step 6 in sequence including `sawtooth-poet-validator-registry-tp.service` on all nodes. Please refer to [this documentation[(https://sawtooth.hyperledger.org/docs/core/nightly/master/app_developers_guide/creating_sawtooth_network.html) for more details.
  	
-Please refer to the following documentation for more details :
- 	
- 	https://sawtooth.hyperledger.org/docs/core/nightly/master/app_developers_guide/creating_sawtooth_network.html 
- 	
- 	
-	
-
-
-
-
-	
 ## 10. eKYC Application - single node setup
 
-**Please make sure all the services are up and running before starting on following steps.**
+***Please make sure all the services are up and running before starting on following steps.***
 ```		
- cd /sawtooth/jsclient/configs
-```
-```	
- sudo nano notification_config.js
+cd /sawtooth/jsclient/configs	
+sudo nano notification_config.js
 ```	
 Provide your ip address at IP_ADDRESS: "VM-IP-ADDRESS" eg., IP_ADDRESS : "198.168.0.1"
 Similarly, provide other configurations provided in the `notification_config.js` file. 
@@ -306,42 +293,34 @@ bash category.sh
 In /sawtooth directory path;
 ```	
 cd /jsclient
-```	
-```
 rm -rf node_modules
-```		
-```
 npm install --save
 ```		
-
-Now run the application by running command [Check if Mongo Service is running or not. If not, start the service as 		mentioned in MongoDB installation]
+Now run the application by running command [Check if Mongo Service is running or not. If not, start the service as  mentioned in MongoDB installation]
 ```   
 node kycMember.js
 ```   		
 
 Go to `http://<VM-IP-ADDRESS>:2309/register` and fill up the admin account details:
-
-    	Name
-    	Email Address
-    	Designation
-    	Organisation
-    	CIN
-    	Website Address
-    	Cell Number
-
-	Click create  
-	
-You will be redirected to a page that displays the message `Account activation mail has been sent to email`.
+```
+Name
+Email Address
+Designation
+Organisation
+CIN
+Website Address
+Cell Number 
+```
+Click `create`. You will be redirected to a page that displays the message `Account activation mail has been sent to email`.
    
-Click on `Activate Account` button in the email received for setting up this solution. You will be redirected to a page 	that displays the message - `Login credentials has been sent to your email`.
+Click on `Activate Account` button in the email received for setting up this solution. You will be redirected to a page that displays the message - `Login credentials has been sent to your email`.
    
 Go to your email and click on the link and use the login credentials emailed to login.
       
 ## 11. eKYC Application - multi node setup
 
-**Please make sure all the services are up and running before starting on following steps.**
-
-```		
+***Please make sure all the services are up and running before starting on following steps.***
+```	
 cd /sawtooth/jsclient/configs
 sudo nano notification_config.js
 ```	
@@ -350,16 +329,13 @@ Similarly, provide other configurations provided in the notification_config.js f
 	   
 Please enter SENDGRID_API_KEY in config.conf. This is your Sendgrid API key. This is for transactional emails. If you don't have a sendgrid account, create one at https://sendgrid.com/
 	   
-Save and exit nano.
+```Save and exit nano.```
 		
-Now run: [**Note: Run only on one of the nodes**] (sawtooth/).
-
+Now run: [***Note: Run only on one of the nodes***] (sawtooth/).
 ```		
 bash category.sh
 ```		
-
 In /sawtooth directory path;
-	
 ```
 cd /jsclient
 rm -rf node_modules
@@ -376,15 +352,15 @@ node kycMember.js
 ```		
 Go to `http://<VM-IP-ADDRESS>:2309/register` and fill up the admin account details:
 
-    	Name
-    	Email Address
-    	Designation
-    	Organisation
-    	CIN
-    	Website Address
-    	Cell Number
+Name
+Email Address
+Designation
+Organisation
+CIN
+Website Address
+Cell Number
 
-	Click create  
+Click `create`
 		
 You will be redirected to a page that displays the message `Account activation mail has been sent to email`.
    
@@ -408,13 +384,13 @@ node kycAdmin.js
 ```	
 Go to `http://<VM-IP-ADDRESS>:2405/register` and fill up the admin account details:
 
-    	Name
-    	Email Address
-    	Designation
-    	Organisation
-    	Cell Number
+Name
+Email Address
+Designation
+Organisation
+Cell Number
 
-	Click create
+Click `create`
 		
 You will be redirected to a page that displays the message `Account activation mail has been sent to email`. 
 	
