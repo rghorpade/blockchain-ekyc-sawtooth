@@ -20,9 +20,28 @@
 ## 1. Introduction
 Financial and capital markets use the KYC (Know Your Customer) system to identify "bad" customers and minimise money laundering, tax evasion and terrorism financing. Efforts to prevent money laundering and the financing of terrorism are costing the financial sector billions of dollars. Banks are also exposed to huge penalties for failure to follow KYC guidelines. Costs aside, KYC can delay transactions and lead to duplication of effort between banks.
 
-Blockchain-eKYC (Hyperledger Sawtooth) is a permissioned Hyperledger Sawtooth blockchain for sharing corporate KYC records. The records are stored in the blockchain in an encrypted form and can only be viewed by entities that have been "whitelisted" by the issuer entity. This ensures data privacy and confidentiality while at the same time ensuring that records are shared only between entities that trust each other.
+Blockchain-eKYC (Hyperledger Sawtooth) is a permissioned Hyperledger Sawtooth blockchain for sharing corporate KYC records amongst banks and other financial institutions. 
 
-**Blockchain-eKYC (Hyperledger Sawtooth) is maintained by Rahul Tiwari, Blockchain Developer, Primechain Technologies Pvt. Ltd.**
+The records are stored in the blockchain in an encrypted form and can only be viewed by entities that have been "whitelisted" by the issuer entity. This ensures data privacy and confidentiality while at the same time ensuring that records are shared only between entities that trust each other.
+
+Blockchain-eKYC (Hyperledger Sawtooth) is maintained by Rahul Tiwari, Blockchain Developer, [Primechain Technologies Pvt. Ltd.](http://www.primechaintech.com/)
+
+***Primeary benefits***
+
+1. Removes duplication of effort, automates processes and reduces compliance errors.
+
+2. Enables the distribution of encrypted updates to client information in real time.
+
+3. Provides the historical record of all compliance activities undertaken for each customer.
+
+4. Provides the historical record of all documents pertaining to each customer.
+
+5. Records can be used as evidence to prove to regulators that the bank has complied with all relevant regulations.
+
+6. Enables identification of entities attempting to create fraudulent histories.
+
+7. Enables data and records to be analyzed to spot criminal activities.
+
 
 ## 2. Uploading records
 
@@ -40,13 +59,13 @@ Records can be uploaded in any format (doc, pdf, jpg etc.) upto a maximum of 10 
 
 4. ***A brief description of the document*** - This information is stored in the blockchain in plain text / un-encrypted form and cannot be changed.
 
-5. ***The document*** - this document can be in pdf, word, excel, image or other formats and is stored in the blockchain in AES encrypted form and cannot be changed. The decryption key is stored in the relevant bank's dedicated database and does NOT go into the blockchain. 
+5. ***The document*** - this can be in pdf, word, excel, image or other format and is stored in the blockchain in AES encrypted form and cannot be changed. The decryption key is stored in the relevant bank's dedicated database and does NOT go into the blockchain. 
 
 ***When the above information is provided, this is what happens:***
 1. Hash of the uploaded file is calculated.
 2. The file is digitally signed using the private key of the uploader bank.
-3. File Data is encrypted using AES symmetric encryption.
-4. The encrypted file is converted into hexadecimal.
+3. The file is encrypted using AES symmetric encryption.
+4. The encrypted data is converted into hexadecimal.
 5. The non-encrypted data is converted into hexadecimal.
 6. Hexadecimal content is uploaded to the blockchain.
 
@@ -73,19 +92,20 @@ Records can be uploaded in any format (doc, pdf, jpg etc.) upto a maximum of 10 
 This section uses the following terminoloy: 
 * [Transaction Processor](https://intelledger.github.io/architecture/transactions_and_batches.html) - this is the business logic / smart contracts layer.
 * [Validator Process](https://sawtooth.hyperledger.org/docs/core/releases/latest/architecture/global_state.html) - this is the Global State Store layer. 
-* Client Application (User)	- this implies a user on solution; the user’s public key executes the transactions.
+* Client Application (User)	- this implies a user of the solution; the user’s public key executes the transactions.
 
-The Transaction Processor of the eKYC application is written in Java. It contains all the business logic of the application. Hyperledger Sawtooth stores data within a Merkle Tree. Data is stored in leaf nodes, and each node is accessed using an addressing scheme that is composed of 35 bytes, represented as 70 hex characters. 
+The Transaction Processor of the eKYC application is written in Java. It contains all the business logic of the application. Hyperledger Sawtooth stores data within a Merkle Tree. Data is stored in leaf nodes and each node is accessed using an addressing scheme that is composed of 35 bytes, represented as 70 hex characters. 
 
-Using the Corporate Identity Number or CIN, provided by user while uploading, a 70 characters (35 bytes) address is created for uploading a record to the blockchain. To understand the Address creation and Namespace design process [see this](https://sawtooth.hyperledger.org/docs/core/releases/1.0/app_developers_guide/address_and_namespace.html)
+Using the Corporate Identity Number or CIN, provided by user while uploading, a 70 characters (35 bytes) address is created for uploading a record to the blockchain. To understand the address creation and namespace design process, [see this](https://sawtooth.hyperledger.org/docs/core/releases/1.0/app_developers_guide/address_and_namespace.html).
 
 Below is the address creation logic in the application:
+
 ![address creation logic](http://www.primechaintech.com/img/sawtooth/address_creation.png)
 
-```
-uniqueValue is the type of data (can be any value)
-kycAddress is the CIN of the uploaded document.
-```
+Note:
+`uniqueValue` is the type of data (can be any value)
+`kycAddress` is the CIN of the uploaded document.
+
 According to the use case, the User can upload multiple files using the same CIN. However, state will return only the latest uploaded document. To get all the uploaded documents on the same address,  business logic is written in Transaction Processor.  
 
 ![](http://www.primechaintech.com/img/sawtooth/txn_logic.png)
