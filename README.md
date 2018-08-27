@@ -1,6 +1,8 @@
 # Blockchain-eKYC (Hyperledger Sawtooth)
 ### Open source eKYC blockchain built on Hyperledger Sawtooth
 
+![Dashboard](http://www.primechaintech.com/img/sawtooth/dashboard.png)
+
 ## Introduction
 Financial and capital markets use the KYC (Know Your Customer) system to identify "bad" customers and minimise money laundering, tax evasion and terrorism financing. Efforts to prevent money laundering and the financing of terrorism are costing the financial sector billions of dollars. Banks are also exposed to huge penalties for failure to follow KYC guidelines. Costs aside, KYC can delay transactions and lead to duplication of effort between banks.
 
@@ -9,6 +11,8 @@ Blockchain-eKYC (Hyperledger Sawtooth) is a permissioned Hyperledger Sawtooth bl
 **Blockchain-eKYC (Hyperledger Sawtooth) is maintained by Rahul Tiwari, Blockchain Developer, Primechain Technologies Pvt. Ltd.**
 
 ## 2. Uploading records
+
+![Uploading records](http://www.primechaintech.com/img/sawtooth/upload.png)
 
 Records can be uploaded in any format (doc, pdf, jpg etc.) upto a maximum of 10 MB per record. These records are automatically encrypted using AES symmetric encryption algorithm and the decryption keys are automatically stored in the exclusive web application of the of the uploading entity. 
 
@@ -42,7 +46,9 @@ Document type. This information is stored in the blockchain in plain text / un-e
       initialisation_vector: FAaZB6MuHIuX
     }
 ```
-![Uploading a record](http://www.primechaintech.com/images/open_source/2_upload_record.png)
+![Search](http://www.primechaintech.com/img/sawtooth/search.png)
+
+![Search](http://www.primechaintech.com/img/sawtooth/search2.png)
 
 
 ## A. Installation and setup
