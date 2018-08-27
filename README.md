@@ -26,7 +26,7 @@ The records are stored in the blockchain in an encrypted form and can only be vi
 
 Blockchain-eKYC (Hyperledger Sawtooth) is maintained by Rahul Tiwari, Blockchain Developer, [Primechain Technologies Pvt. Ltd.](http://www.primechaintech.com/)
 
-***Primeary benefits***
+***Primary benefits***
 
 1. Removes duplication of effort, automates processes and reduces compliance errors.
 
@@ -89,7 +89,7 @@ Records can be uploaded in any format (doc, pdf, jpg etc.) upto a maximum of 10 
 
 ## 3. Transaction Processor and State
 
-This section uses the following terminoloy: 
+This section uses the following terminology: 
 * [Transaction Processor](https://intelledger.github.io/architecture/transactions_and_batches.html) - this is the business logic / smart contracts layer.
 * [Validator Process](https://sawtooth.hyperledger.org/docs/core/releases/latest/architecture/global_state.html) - this is the Global State Store layer. 
 * Client Application (User)	- this implies a user of the solution; the user’s public key executes the transactions.
@@ -115,7 +115,7 @@ The `else {` part will do the uploading of multiple documents on the same addres
 
 ## 4. Client Application
 
-Client application uses REST API endpoints to upload (POST), get (GET) documents on the sawtooth blockchain platform. It is written in Nodejs. In case of uploading, few steps to be considered:
+The client application uses REST API endpoints to upload (POST), get (GET) documents on the sawtooth blockchain platform. It is written in Nodejs. In case of uploading, few steps to be considered:
 * Creating and encoding transactions having header, header signature, payload (Transaction payloads are composed of binary-encoded data that is opaque to the validator.)
 
 ![](http://www.primechaintech.com/img/sawtooth/transaction.png)
@@ -130,11 +130,11 @@ Client application uses REST API endpoints to upload (POST), get (GET) documents
 
 In case of getting uploaded data from blockchain, following steps needs to be considered:
 
-1. Creating the same address from the CIN given by User, using GET method to fetch the data stored on the particular address. As given in following code snippet, `updatedAddress` created by getting user input either from User (search using CIN in the network) or from private database of the user (Records uploaded by the user). Similarly, `splitStringArray` splits the data returned from a particular address because of the transaction logic written in the Transaction Processor to upload multiple documents on the same address while updating state with list of all the uploaded data (not only the current payload).
+1. Creating the same address from the CIN given by the User, using GET method to fetch the data stored on the particular address. As given in following code snippet, `updatedAddress` created by getting user input either from User (search using CIN in the network) or from private database of the user (Records uploaded by the user). Similarly, `splitStringArray` splits the data returned from a particular address because of the transaction logic written in the Transaction Processor to upload multiple documents on the same address while updating state with the list of all the uploaded data (not only the current payload).
 
 ![](http://www.primechaintech.com/img/sawtooth/get_addr.png)
 
-2. After this client side logic is written to convert the `splitStringArray` by decoding it to the required format and giving User an option to download the same in the form of file.
+2. After this client side logic is written to convert the `splitStringArray` by decoding it to the required format and giving User an option to download the same in the form of a file.
 
 ## 5. Installation and setup
 Please refer to the guide here:
